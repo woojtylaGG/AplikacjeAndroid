@@ -1,19 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:id="@+id/main"
+    android:padding="16dp">
 
-    <TextView
+    <!-- Formularz do dodawania treningu -->
+    <EditText
+        android:id="@+id/editTextDistance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dystans"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Czas trwania"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/editTextCalories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Spalone kalorie"
+        android:inputType="numberDecimal"/>
+
+    <SeekBar
+        android:id="@+id/seekBarIntensity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="3"
+        android:progress="1"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioWalking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spacer" />
+
+        <RadioButton
+            android:id="@+id/radioRunning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bieg" />
+
+        <RadioButton
+            android:id="@+id/radioStrengthTraining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trening siłowy" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonAddActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Dodaj trening"
+        android:layout_gravity="center"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- RecyclerView do wyświetlania listy treningów -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewActivities"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>
