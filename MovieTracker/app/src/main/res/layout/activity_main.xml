@@ -1,56 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    tools:context=".MainActivity">
 
-    <!-- Wyszukiwanie filmu -->
     <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="match_parent"
+        android:id="@+id/titleEditText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter movie title"
-        android:inputType="text" />
+        android:hint="Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
 
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/genreEditText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="Genre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleEditText"
+        app:layout_constraintHorizontal_bias="0.5" />
 
-    <!-- Wyświetlanie danych o filmie -->
-    <ImageView
-        android:id="@+id/ivPoster"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp" />
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/reviewEditText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Title"
-        android:textSize="18sp"
-        android:layout_marginTop="8dp" />
+        android:hint="Review"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genreEditText"
+        app:layout_constraintHorizontal_bias="0.5" />
 
-    <TextView
-        android:id="@+id/tvPlot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Plot"
-        android:layout_marginTop="8dp" />
-
-    <!-- Ocena filmu -->
     <SeekBar
-        android:id="@+id/seekBarRating"
-        android:layout_width="match_parent"
+        android:id="@+id/ratingSeekBar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:max="10" />
+        android:max="10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reviewEditText"
+        app:layout_constraintHorizontal_bias="0.5" />
 
-    <Button
-        android:id="@+id/btnSaveRating"
+    <RadioGroup
+        android:id="@+id/typeRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save Rating"
-        android:layout_marginTop="16dp" />
-</LinearLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ratingSeekBar"
+        app:layout_constraintHorizontal_bias="0.5">
+
+        <RadioButton
+            android:id="@+id/movieRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Movie" />
+
+        <RadioButton
+            android:id="@+id/bookRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/typeRadioGroup"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addButton"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
