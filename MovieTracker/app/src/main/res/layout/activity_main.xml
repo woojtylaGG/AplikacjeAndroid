@@ -1,90 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <EditText
-        android:id="@+id/titleEditText"
-        android:layout_width="0dp"
+        android:id="@+id/movieInput"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" />
-
-    <EditText
-        android:id="@+id/genreEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Genre"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleEditText"
-        app:layout_constraintHorizontal_bias="0.5" />
-
-    <EditText
-        android:id="@+id/reviewEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Review"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/genreEditText"
-        app:layout_constraintHorizontal_bias="0.5" />
-
-    <SeekBar
-        android:id="@+id/ratingSeekBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:max="10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviewEditText"
-        app:layout_constraintHorizontal_bias="0.5" />
-
-    <RadioGroup
-        android:id="@+id/typeRadioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ratingSeekBar"
-        app:layout_constraintHorizontal_bias="0.5">
-
-        <RadioButton
-            android:id="@+id/movieRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Movie" />
-
-        <RadioButton
-            android:id="@+id/bookRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Book" />
-    </RadioGroup>
+        android:hint="Wpisz nazwę filmu" />
 
     <Button
-        android:id="@+id/addButton"
+        android:id="@+id/searchButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Szukaj" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"/>
+
+    <ImageView
+        android:id="@+id/moviePoster"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/ratingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"> <!-- Zmienione na "visible" -->
+
+        <TextView
+            android:id="@+id/ratingLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ocena filmu: 0/10"
+            android:textAlignment="center"/>
+
+        <SeekBar
+            android:id="@+id/ratingSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="10"/>
+    </LinearLayout>
+
+
+    <CheckBox
+        android:id="@+id/watchedCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/typeRadioGroup"
-        app:layout_constraintHorizontal_bias="0.5" />
+        android:layout_marginTop="16dp"
+        android:text="Obejrzany"
+        android:visibility="gone" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addButton"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zatwierdź"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/watchedText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_green_dark"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Usuń"
+        android:layout_marginTop="8dp"
+        android:visibility="gone" />
+
+</LinearLayout>
