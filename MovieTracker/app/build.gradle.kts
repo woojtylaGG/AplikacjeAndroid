@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.movietracker"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.movietracker"
@@ -36,7 +36,9 @@ android {
 }
 
 dependencies {
-
+    implementation ("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    implementation("com.google.code.gson:gson:2.8.9")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
